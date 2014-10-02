@@ -1,6 +1,6 @@
 require 'yaml'
 
-ERRORS = YAML::load(File.open("./lib/errors.yml")).inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+ERRORS = YAML::load(File.open("./lib/inits/errors.yml")).inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
 class Conf
 
@@ -12,9 +12,9 @@ class Conf
 			self.validate @@params
 
 		rescue Psych::SyntaxError
-			puts ERRORS[:syntax]
+			abort(ERRORS[:syntax])
 		rescue Errno::ENOENT
-			puts ERRORS[:conf_not_found]
+			abort(ERRORS[:conf_not_found])
 		end
 	end
 

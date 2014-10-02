@@ -1,5 +1,6 @@
-require './lib/config.rb'
-require './lib/kemeny'
+require './lib/inits/config.rb'
+require './lib/methods/kemeny'
+require './lib/methods/borda'
 
 class UTR
 
@@ -10,6 +11,10 @@ class UTR
 	module Methods
 		class Kemeny
 			include KemenyModule
+		end
+
+		class Borda
+			include BordaModule
 		end
 	end
 
@@ -40,7 +45,9 @@ class UTR
 
 		case Conf.method
 		when "kemeny"
-			dump_result Methods::Kemeny.new.run data
+			dump_result Methods::Kemeny.run data
+		when "borda"
+			dump_result Methods::Borda.run data
 		end
 	end
 	

@@ -1,13 +1,13 @@
-require './lib/config.rb'
-require './lib/quick.rb'
+require './lib/inits/config.rb'
+require './lib/common/quick.rb'
 
 module KemenyModule
 
 	def self.included(base)
-		base.send :include, InstanceMethods
+		base.extend(ClassMethods)
 	end
 
-	module InstanceMethods
+	module ClassMethods
 
 		def run data
 
@@ -20,13 +20,13 @@ module KemenyModule
 
 			result = {}
 			candidates.keys.sort.each do |group_id|
-				result[group_id] = apply_skr candidates[group_id]
+				result[group_id] = aggregate candidates[group_id]
 			end
 
 			return result
 		end
 
-		def apply_skr candidates
+		def aggregate candidates
 			puts "candidates: #{candidates}"
 			puts ""
 

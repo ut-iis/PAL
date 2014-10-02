@@ -1,5 +1,5 @@
 ---
-method:	kemeny
+method:	borda
 out: /home/pooya/Projects/UTR/samples/output.dat
 estimators:
     listnet:
