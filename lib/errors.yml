@@ -1,0 +1,5 @@
+---
+syntax: Your YML config file has syntax error
+conf_not_found: Config file not found. maybe you should use absolute path.
+no_out: You haven't specified output file in the config file.
+no_method: You haven't specified aggregation method in the config file.
