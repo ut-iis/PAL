@@ -1,6 +1,7 @@
 require './lib/inits/config.rb'
 require './lib/methods/kemeny'
 require './lib/methods/borda'
+require './lib/methods/copeland'
 require './lib/evaluation/evaluate'
 
 class UTR
@@ -16,6 +17,10 @@ class UTR
 
 		class Borda
 			include BordaModule
+		end
+
+		class Copeland
+			include CopelandModule
 		end
 	end
 
@@ -60,6 +65,8 @@ class UTR
 			dump_result Methods::Kemeny.run data
 		when "borda"
 			dump_result Methods::Borda.run data
+		when "copeland"
+			dump_result Methods::Copeland.run data
 		end
 
 		puts $MESSAGES[:done]
