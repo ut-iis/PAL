@@ -27,8 +27,8 @@ module KemenyModule
 		end
 
 		def aggregate candidates
-			puts "candidates: #{candidates}"
-			puts ""
+			# puts "candidates: #{candidates}"
+			# puts ""
 
 			majority_table = Hash.new { |h,k| h[k] = {} }
 			(0..candidates.size - 1).each do |i| # initializing the majority table
@@ -56,8 +56,8 @@ module KemenyModule
 			keys = candidates.keys
 			result = keys
 
-			puts "before: #{result}"
-			puts "majority table: #{majority_table}"
+			# puts "before: #{result}"
+			# puts "majority table: #{majority_table}"
 			comp = Proc.new do |value1, value2|
 				j = candidates.keys.index(value1)
 				jp = candidates.keys.index(value2)
@@ -72,7 +72,7 @@ module KemenyModule
 
 			QuickSort.sort!(result, comp)
 
-			puts "result: #{result}"
+#			puts "result: #{result}"
 			return result
 		end
 	end

@@ -1,5 +1,9 @@
 ---
-syntax: Your YML config file has syntax error
+syntax: Your YML config file has syntax error.
 conf_not_found: Config file not found. maybe you should use absolute path.
 no_out: You haven't specified output file in the config file.
 no_method: You haven't specified aggregation method in the config file.
+no_ev_method: no evaluation method found in the config file.
+no_ev_solution: no evaluation solution path found in the config file.
+group_ids_not_match: group ids in ranking files do not match with each other.
+instance_ids_not_match: instance ids in ranking files do not match with each other.

@@ -1,6 +1,6 @@
 require 'yaml'
 
-ERRORS = YAML::load(File.open("./lib/inits/errors.yml")).inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+$ERRORS = YAML::load(File.open("./lib/inits/errors.yml")).inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
 class Conf
 
@@ -12,9 +12,9 @@ class Conf
 			self.validate @@params
 
 		rescue Psych::SyntaxError
-			abort(ERRORS[:syntax])
+			abort($ERRORS[:syntax])
 		rescue Errno::ENOENT
-			abort(ERRORS[:conf_not_found])
+			abort($ERRORS[:conf_not_found])
 		end
 	end
 
@@ -38,9 +38,19 @@ class Conf
 		return @@params[:out]
 	end
 
+	def self.get_ev_method
+		return @@params[:evaluation]["method"]
+	end
+
+	def self.get_ev_solution
+		return @@params[:evaluation]["solution_file"]
+	end
+
 	private
 		def self.validate params
-			abort(ERRORS[:no_out]) unless params[:out]
-			abort(ERRORS[:no_method]) unless params[:method]
+			abort($ERRORS[:no_out]) unless params[:out]
+			abort($ERRORS[:no_method]) unless params[:method]
+			#abort(ERRORS[:no_ev_method]) (if params[:evaluation] and !params[:evaluation]["method"])
+			abort($ERRORS[:no_ev_solution]) if (params[:evaluation] and !params[:evaluation]["solution_file"])
 		end
 end

@@ -1,6 +1,7 @@
 require './lib/inits/config.rb'
 require './lib/methods/kemeny'
 require './lib/methods/borda'
+require './lib/evaluation/evaluate'
 
 class UTR
 
@@ -18,6 +19,10 @@ class UTR
 		end
 	end
 
+	class Evaluatation
+		include EvaluateModule
+	end
+
 	def load_data
 		data = Hash.new { |h,k| h[k] = Hash.new { |hh,kk| hh[kk] = {} }}
 		Conf.estimators.each do |estimator|
@@ -27,6 +32,9 @@ class UTR
 				data[estimator][group_id][instance_id] = score
 			end
 		end
+
+		validate data
+
 		return data
 	end
 
@@ -48,6 +56,25 @@ class UTR
 			dump_result Methods::Kemeny.run data
 		when "borda"
 			dump_result Methods::Borda.run data
+		end
+	end
+
+	def evaluate(method)
+		Conf.estimators.each do |estimator|
+			result = Evaluatation.new(Conf.get_ev_solution, Conf.get_path(estimator)).by(method)
+			puts "#{estimator} #{method} -> #{result}"
+		end
+		result = Evaluatation.new(Conf.get_ev_solution, Conf.get_output).by(method)
+		puts "#{Conf.method} aggregation method #{method} -> #{result} "
+	end
+
+	private
+	def validate data
+		data.keys[0..-2].each_with_index do |estimator, i|
+			abort(ERROR[:group_ids_not_match]) if data[estimator].keys.sort != data[data.keys[i+1]].keys.sort
+			data[estimator].each do |group_id, hash|
+				abort($ERRORS[:instance_ids_not_match]) if hash.keys.sort != data[data.keys[i+1]][group_id].keys.sort
+			end
 		end
 	end
 	
