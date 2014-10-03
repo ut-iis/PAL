@@ -1,10 +1,12 @@
 require 'yaml'
 
 $ERRORS = YAML::load(File.open("./lib/inits/errors.yml")).inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
-
+$MESSAGES = YAML::load(File.open("./lib/inits/messages.yml")).inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 class Conf
 
 	def self.init(config_file)
+		puts $MESSAGES[:init]
+		
 		begin
 			@@params = YAML::load(File.open(config_file)).inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 			@@params[:estimators].each { |estimator,hash| hash["weight"] ||= 1 }

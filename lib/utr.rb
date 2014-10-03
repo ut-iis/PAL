@@ -24,8 +24,10 @@ class UTR
 	end
 
 	def load_data
+		puts $MESSAGES[:loading_data]
+
 		data = Hash.new { |h,k| h[k] = Hash.new { |hh,kk| hh[kk] = {} }}
-		Conf.estimators.each do |estimator|
+		Conf.estimators.each_with_index do |estimator,i|
 			File.readlines(Conf.get_path(estimator)).each do |line|
 				splitted = line.split(',')
 				group_id, instance_id, score = splitted[0].to_i, splitted[1].to_i, splitted[2].to_f
@@ -39,6 +41,8 @@ class UTR
 	end
 
 	def dump_result result
+		puts $MESSAGES[:dumping]
+
 		file = File.open(Conf.get_output,'w')
 		result.each do |group_id, array|
 			array.each_with_index do |instance_id, i|
@@ -57,9 +61,13 @@ class UTR
 		when "borda"
 			dump_result Methods::Borda.run data
 		end
+
+		puts $MESSAGES[:done]
 	end
 
 	def evaluate(method)
+		puts $MESSAGES[:evaluating]
+
 		Conf.estimators.each do |estimator|
 			result = Evaluatation.new(Conf.get_ev_solution, Conf.get_path(estimator)).by(method)
 			puts "#{estimator} #{method} -> #{result}"

@@ -10,6 +10,8 @@ module BordaModule
 	module ClassMethods
 
 		def run data
+			puts $MESSAGES[:borda]
+			
 			scores = Hash.new { |h,k| h[k] = Hash.new { |hh,kk| hh[kk] = 0 }}
 			data.each do |estimator,hash|
 				hash.each do |group_id, hash2|

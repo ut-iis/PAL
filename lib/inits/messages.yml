@@ -1,0 +1,9 @@
+---
+init: -> initializing and loading configs
+loading_data: -> loading data from input files
+dumping: -> Writing aggregation result to file
+evaluating: -> evaluating base rankings and the aggregation
+kemeny: -> Applying kemeny aggregating method
+borda: -> Applying borda aggregating method
+done: -> done :)
+

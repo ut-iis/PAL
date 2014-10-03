@@ -10,6 +10,7 @@ module KemenyModule
 	module ClassMethods
 
 		def run data
+			puts $MESSAGES[:kemeny]
 
 			candidates = Hash.new { |h,k| h[k] = Hash.new { |hh,kk| hh[kk] = {} } } # we need a hash with instance ids as keys
 			data.each do |estimator, hash|
