@@ -2,6 +2,7 @@ require './lib/inits/config.rb'
 require './lib/methods/kemeny'
 require './lib/methods/borda'
 require './lib/methods/copeland'
+require './lib/methods/schulze'
 require './lib/evaluation/evaluate'
 
 class UTR
@@ -21,6 +22,10 @@ class UTR
 
 		class Copeland
 			include CopelandModule
+		end
+
+		class Schulze
+			include SchulzeModule
 		end
 	end
 
@@ -67,6 +72,8 @@ class UTR
 			dump_result Methods::Borda.run data
 		when "copeland"
 			dump_result Methods::Copeland.run data
+		when "schulze"
+			dump_result Methods::Schulze.run data
 		end
 
 		puts $MESSAGES[:done]

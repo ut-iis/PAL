@@ -6,5 +6,6 @@ evaluating: -> Evaluating base rankings and the aggregation
 kemeny: -> Applying kemeny aggregating method
 borda: -> Applying borda aggregating method
 copeland: -> Applying copeland aggregating method
+schulze: -> Applying schulze aggregating method
 done: -> Done :)
 

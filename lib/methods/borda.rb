@@ -1,5 +1,4 @@
 require './lib/inits/config.rb'
-require './lib/common/quick.rb'
 
 module BordaModule
 
@@ -25,7 +24,6 @@ module BordaModule
 			scores.each do |group_id, hash|
 				result[group_id] = hash.keys.sort_by { |instance_id| [-1*hash[instance_id], -1*instance_id] }
 			end
-
 			return result
 		end
 
