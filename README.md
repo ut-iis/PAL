@@ -1,13 +1,13 @@
 # PAL
+Pereference/Ranking Aggregation Library
 
 ## About
-PAL is a ranking aggregation library [Intelligent Information Systems Labratory](http://ece.ut.ac.ir/en/lab/intelligent-information-system-lab) of [ECE](http://ece.ut.ac.ir/), developed
-to be used in [ACM Recsys Challenge 2014](http://2014.recsyschallenge.com). 
-This library is developed in Ruby.
+PAL is a ranking aggregation Ruby library developed in [Intelligent Information Systems Labratory](http://ece.ut.ac.ir/en/lab/intelligent-information-system-lab) of [School of ECE](http://ece.ut.ac.ir/) at [University of Tehran](http://ut.ac.ir/en/). 
+
 
 ## Supported Methods
 
-* Supervised Kemeny Ranking
+* Weighted Kemeny Ranking
 * Borda Count
 * Copeland
 * Schulze
@@ -60,7 +60,7 @@ ruby rank.rb
 You can cite our paper published in ACM RecSys 2014:
 
 ```bib
-@inproceedings{Zamani:2014b,
+@inproceedings{Zamani:2014,
   author    = {Zamani, Hamed and
                Shakery, Azadeh and
 			   Moradi, Pooya},
