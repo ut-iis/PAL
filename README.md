@@ -1,7 +1,7 @@
 # PAL
 Pereference/Ranking Aggregation Library
 
-All ideas and contributions are welcome. If you have any suggestion you can contanct Pooya Moradi (po.moradi -at- ut.ac.ir) or Hamed Zamani (hamedzamani -at- acm.org). Please let us know if you found any problems/bugs in the code.
+All ideas and contributions are welcome. If you have any suggestions, you can contanct Pooya Moradi (po.moradi -at- ut.ac.ir) or Hamed Zamani (hamedzamani -at- acm.org). Please let us know if you found any problems/bugs in the code.
 
 ## About
 PAL is a ranking aggregation Ruby library developed in [Intelligent Information Systems Labratory](http://ece.ut.ac.ir/en/lab/intelligent-information-system-lab) of [School of ECE](http://ece.ut.ac.ir/) at [University of Tehran](http://ut.ac.ir/en/). 
