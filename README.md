@@ -25,31 +25,31 @@ Now you should edit the sample config file according to your needs.
 
 ```yaml
 method: kemeny
-out: /home/pooya/Projects/UTR/samples/output.dat
+out: /home/pooya/Projects/PAL/samples/output.dat
 estimators:
     listnet:
-      path: /home/pooya/Projects/UTR/samples/listnet.dat
+      path: /home/pooya/Projects/PAL/samples/listnet.dat
       weight: 2
     ranknet:
-      path: /home/pooya/Projects/UTR/samples/ranknet.dat
+      path: /home/pooya/Projects/PAL/samples/ranknet.dat
       weight: 3
     listmle:
-      path: /home/pooya/Projects/UTR/samples/listmle.dat
+      path: /home/pooya/Projects/PAL/samples/listmle.dat
       weight: 3
     svm:
-      path: /home/pooya/Projects/UTR/samples/svm.dat
+      path: /home/pooya/Projects/PAL/samples/svm.dat
       weight: 1
 evaluation:
-    solution_file: /home/pooya/Projects/UTR/samples/solution.dat
+    solution_file: /home/pooya/Projects/PAL/samples/solution.dat
 ```
 
 Then in the `rank.rb` file you should address the config file and set if you want to evaluate the aggregation or not.
 ```ruby
 require './lib/pal.rb'
 
-utr = UTR.new("/home/pooya/Projects/PAL/lib/inits/config.yml")
-utr.run
-#utr.evaluate("NDCG@10")
+pal = PAL.new("/home/pooya/Projects/PAL/lib/inits/config.yml")
+pal.run
+#pal.evaluate("NDCG@10")
 ```
 
 And finally:

@@ -1,5 +1,5 @@
-require './lib/utr.rb'
+require './lib/pal.rb'
 
-utr = UTR.new("/home/pooya/Projects/UTR/lib/inits/config.yml")
-utr.run
-#utr.evaluate("NDCG@10")
+pal = PAL.new("/home/pooya/Projects/PAL/lib/inits/config.yml")
+pal.run
+#pal.evaluate("NDCG@10")
